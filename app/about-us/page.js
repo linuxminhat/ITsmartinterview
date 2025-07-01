@@ -69,7 +69,7 @@ const AboutUsPage = () => {
             Giới thiệu về ITSmartMockInterview
           </h1>
           <p className="mt-4 max-w-xl mx-auto text-base sm:text-lg md:text-xl text-gray-600 px-4">
-            Trao quyền cho các chuyên gia để vượt qua các cuộc phỏng vấn thông qua việc huấn luyện AI thông minh, được cá nhân hóa
+            Trao cho ứng viên công nghệ sự tự tin vượt qua phỏng vấn với trợ lý AI thông minh và cá nhân hóa.
           </p>
         </div>
 

@@ -69,7 +69,6 @@ function AddNewInterview() {
   const { user } = useUser();
   const router = useRouter();
 
-  // Auto-suggest tech stack based on job role
   const autoSuggestTechStack = (role) => {
     const suggestion = TECH_STACK_SUGGESTIONS[role];
     if (suggestion) {

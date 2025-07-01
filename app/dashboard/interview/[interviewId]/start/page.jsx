@@ -39,9 +39,8 @@ const StartInterview = ({ params }) => {
   };
 
   const handleAnswerSave = (answerRecord) => {
-    // Chỉ chuyển câu hỏi sau một khoảng thời gian để tránh phát âm thanh đồng thời
     if (activeQuestionIndex < mockInterviewQuestion.length - 1) {
-      // Đợi 3 giây để âm thanh "Cảm ơn bạn..." phát xong
+
       setTimeout(() => {
         setActiveQuestionIndex(prev => prev + 1);
       }, 3000);
@@ -91,7 +90,6 @@ const StartInterview = ({ params }) => {
     return textToSpeachGoogle(completionMessage);
   };
 
-  // Đảm bảo không có âm thanh bị chồng lên nhau khi chuyển câu hỏi
   const handleNextQuestion = () => {
     if (activeQuestionIndex < mockInterviewQuestion.length - 1) {
       setActiveQuestionIndex(prev => prev + 1);

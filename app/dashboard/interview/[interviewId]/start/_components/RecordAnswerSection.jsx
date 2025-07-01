@@ -120,13 +120,11 @@ const RecordAnswerSection = ({
   useEffect(() => {
     if (webcamEnabled && stream && webcamRef.current) {
       webcamRef.current.srcObject = stream;
-      // một số browser yêu cầu gọi play() thủ công
       webcamRef.current.play().catch(() => { });
     }
   }, [webcamEnabled, stream]);
 
 
-  // Speech recognition khởi tạo lại khi ngôn ngữ thay đổi
   useEffect(() => {
     if (typeof window !== "undefined" && "webkitSpeechRecognition" in window) {
       // Dừng recognition hiện tại nếu đang chạy
@@ -138,7 +136,7 @@ const RecordAnswerSection = ({
       const recognition = recognitionRef.current;
       recognition.continuous = true;
       recognition.interimResults = true;
-      recognition.lang = language; // Sử dụng ngôn ngữ từ state
+      recognition.lang = language;
 
       recognition.onresult = (event) => {
         let finalTranscript = "";
@@ -278,6 +276,7 @@ const RecordAnswerSection = ({
     setLoading(true);
 
     try {
+      //AI score 
       const feedbackPrompt = `Câu hỏi: ${mockInterviewQuestion[activeQuestionIndex]?.question}, Câu trả lời của người dùng: ${userAnswer}. Vui lòng đánh giá theo thang điểm 10 và phản hồi về cải tiến trong định dạng JSON { "rating": <number>, "feedback": <text> }`;
 
       const result = await chatSession.sendMessage(feedbackPrompt);
@@ -321,12 +320,8 @@ const RecordAnswerSection = ({
     }
   };
 
-  // Hàm hậu xử lý để cải thiện nhận dạng thuật ngữ IT
   const processITTerms = (text) => {
-    // Chuyển văn bản về chữ thường để dễ so sánh
     let processedText = text.toLowerCase();
-
-    // Tìm và thay thế các thuật ngữ IT
     Object.entries(itTermsCorrections).forEach(([correctTerm, incorrectVariants]) => {
       incorrectVariants.forEach(variant => {
         // Tạo regex để có thể phát hiện thuật ngữ với ranh giới từ

@@ -17,6 +17,7 @@ function Interview({ params }) {
     GetInterviewDetails();
   }, []);
 
+  //Interview data fetch function
   const GetInterviewDetails = async () => {
     try {
       const result = await db

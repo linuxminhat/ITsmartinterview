@@ -11,8 +11,8 @@ import {
   TrendingUp
 } from "lucide-react";
 
-import AddNewInterview from './_components/AddNewInterview'
-import InterviewList from './_components/InterviewList'
+import AddNewInterview from './_components/AddNewInterview'//modal popup create new interview
+import InterviewList from './_components/InterviewList'//Displays a list of interviews that have taken place.
 
 function Dashboard() {
   const { user } = useUser();
@@ -59,15 +59,11 @@ function Dashboard() {
       }
 
       const data = await response.json();
-
-      // Filter interviews specific to the current user's email
       const userSpecificInterviews = data.userAnswers.filter(
         interview => interview.userEmail === user.primaryEmailAddress.emailAddress
       );
 
       setInterviewData(userSpecificInterviews);
-
-      // Calculate and update stats
       const totalInterviews = userSpecificInterviews.length;
       const bestScore = totalInterviews > 0
         ? Math.max(...userSpecificInterviews.map(item => parseInt(item.rating || '0')))

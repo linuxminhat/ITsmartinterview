@@ -4,9 +4,7 @@ import React, { useEffect, useState } from 'react'
 
 const QuestionsSection = ({ mockInterviewQuestion, activeQuestionIndex }) => {
     console.log("🚀 ~ file: QuestionsSection.jsx:4 ~ QuestionsSection ~ mockInterviewQuestion:", mockInterviewQuestion);
-    // Thêm state để kiểm soát việc phát âm thanh
     const [isPlaying, setIsPlaying] = useState(false);
-    // Thêm state để theo dõi xem đã phát âm thanh lần đầu cho câu hỏi này chưa
     const [initialSoundPlayed, setInitialSoundPlayed] = useState({});
 
     const textToSpeachGoogle = async (text) => {

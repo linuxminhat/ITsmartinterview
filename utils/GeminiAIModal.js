@@ -1,6 +1,6 @@
 const {
-  GoogleGenerativeAI,
-  HarmCategory,
+  GoogleGenerativeAI,//class that initializes the AI ​​model.
+  HarmCategory,//harmful content categories
   HarmBlockThreshold,
 } = require("@google/generative-ai");
 
@@ -12,10 +12,10 @@ const model = genAI.getGenerativeModel({
 });
 
 const generationConfig = {
-  temperature: 1,
+  temperature: 1,//The level of AI creativity
   topP: 0.95,
   topK: 64,
-  maxOutputTokens: 8192,
+  maxOutputTokens: 8192,//Limit the maximum length of responses from AI
   responseMimeType: "text/plain",
 };
 
